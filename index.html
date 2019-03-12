@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./jsontotable.js"></script>
     <script>
     var auto;
     </script>
     <style>
     .form-panel{
+        position:fixed;
+        left:0;
+        top:0;
+        width:97%;
         background:#efefef;
         padding:10px;
         border:solid 1px #aaa;
         box-shadow:3px 3px 3px #bbb;
         font-family:arial;
         font-size:1rem;
+        margin:0 5px
     }
     button {
         font-size:1rem;
@@ -28,7 +34,11 @@
     .author {
         font-size:0.7rem;
         color:#bbb;
-        margin-top:10px
+        text-align:right
+    }
+
+    .showdata {
+      margin-top:110px;
     }
     </style>
    
@@ -42,10 +52,10 @@ JSON URL:
 <button onClick="showDemo()">Show Demo</button>
 <div class='info'>
  This JavaScript utility accepts JSON data with one level and converts it 
- into easy to read HTML table. <br/>You can also sort the table by clicking
- on the column header. <br/><br/>For this, all you need to do is just paste the JSON URL into
+ into easy to read HTML table. You can also sort the table by clicking
+ on the column header. <br/>For this, all you need to do is just paste the JSON URL into
  the textbox and press enter.
-<br/>
+</div>
 <div class="author">Developed by Noothan Krishnan</div>
 </div>
 
