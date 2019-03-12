@@ -18,17 +18,26 @@
         cursor:pointer
     }
     #url {font-size:1rem}
+    .info {
+        font-size:0.8rem;
+        margin-top:10px
+    }
     </style>
    
 </head>
 <body>
 <div class='form-panel'>
 JSON URL: 
-<input  onClick="this.select()" onChange="doConvert()" style="width:30%" type="text" placeholder="enter the url" id="url">
+<input  onClick="this.select()" onChange="doConvert()"  type="text" placeholder="enter the url" id="url">
 <button onClick="doConvert()">Show in Table</button>
 <button onClick="doReset()">Reset Sort</button>
 <button onClick="showDemo()">Show Demo</button>
-
+<div class='info'>
+ This JavaScript utility accepts JSON data with one level and converts it 
+ into easy to read HTML table. You can also sort the table by clicking
+ on the column header. <br/>For this, all you need to do is just paste the JSON URL into
+ the text box and press enter.
+</div>
 
 </div>
       
