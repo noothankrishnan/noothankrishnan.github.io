@@ -4,6 +4,12 @@
 
 var myJson, minus=1, plus=-1,unSortedJson=[],sortArrow='&#8659;';
 
+function showDemo(){
+    var demoUrl="https://jsonplaceholder.typicode.com/posts";
+    document.querySelector('#url').value=demoUrl;
+    getData(demoUrl);
+}
+
 function getData(url){
     const xhrObj=new XMLHttpRequest();
     xhrObj.open('GET',url);
@@ -65,7 +71,7 @@ function constructHeader(json){
 
     for (let props in json[0]){
         thClass=props.replace(/[\s\.]/g,'');
-        headerRowItem+="<th class='" + thClass + "' onclick='doSort(this)'>"+props+"</th>";
+        headerRowItem+="<th title='Click to sort this column' class='" + thClass + "' onclick='doSort(this)'>"+props+"</th>";
     }
 
     tableHeader+='<table class="jsontotable"><tr>'+headerRowItem;
