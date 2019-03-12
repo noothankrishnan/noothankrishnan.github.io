@@ -1,4 +1,4 @@
-# noothankrishnan.github.io
+# JSON to HTML table
 
  This JavaScript utility accepts JSON data with one level and converts it 
  into easy to read HTML table. You can also sort the table by clicking
