@@ -10,8 +10,57 @@ function doConvert() {
         getData(document.querySelector('#url').value);
 }
 
-function onSuccess(obj) {
-    auto = JSON.parse(obj.responseText);
+function readTextFile(file, callback, encoding){
+    var reader=new FileReader();
+    reader.addEventListener('load', function(e){
+       callback(this.result);
+    });
+
+    reader.readAsText(file);
+}
+
+function fileChosen(file){
+    
+if (file.files[0]){
+    readTextFile(file.files[0],function(str){
+
+        if ( (str.trim()).substr(0,1)==='{' || (str.trim()).substr(0,1)==='[' ) {
+            if ((str.trim()).substr(0,1)==='{'){
+                str='['+str+']';
+            }
+            
+            onSuccess(null, str);
+        }
+
+        else {
+            document.querySelector('.error').innerHTML =file.files[0].name + ' is not a JSON data file! Expected format is [ {"name":"value"}, {"name":"value"} ] or {"name":"value"}';
+        }
+
+         
+    });
+}
+
+}
+
+function doExtract(){
+    document.querySelector('.showdata').innerHTML = "";
+    document.querySelector(".load-icon").classList.add('lds-hourglass');
+    
+    fileChosen(document.querySelector('#files'));
+    document.querySelector(".load-icon").classList.remove('lds-hourglass');
+
+}
+
+
+function onSuccess(obj, jsonData=null) {
+    if (jsonData){
+        auto=JSON.parse(jsonData);    
+    }
+    else {
+        auto = JSON.parse(obj.responseText);
+    }
+    
+    
     jsonToTable(auto, 'showdata');
     document.querySelector(".load-icon").classList.remove('lds-hourglass');
 }
