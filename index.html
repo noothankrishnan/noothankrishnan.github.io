@@ -13,18 +13,18 @@
       <label>JSON URL:</label>
 
         <input onClick="this.select()" onChange="doConvert()" style="width:30%" type="text" placeholder="enter the url" id="url">
-        
-        <button onClick="doConvert()" class="btn-convert">Show in Table
-            <div class="load-icon"></div>
-        </button>
-        <button onClick="doReset()">Reset Sort</button>
+        <button onClick="doConvert()" class="btn-convert">Enter &#8629;<div class="load-icon"></div></button>
         <button onClick="showDemo()">Show Demo</button>
+        <button onClick="doReset()">Reset Sort</button>
+        <input name="file" type="file" id="files" class="form-control" value="" onChange="doExtract();">
+       
 
         <div class='info'>
             This JavaScript utility accepts JSON data with one level and converts it into an easy to read HTML table. You can also sort the table by clicking on the column header.
-            <br/>For this, all you need to do is just paste the JSON URL into the textbox and press enter.
+            <br/>For this, all you need to do is either paste a JSON URL into the textbox and press enter or choose a JSON data file from your hard disk.
         </div>
- 
+
+
         <div class='error'></div>
 
         <div class="author">Developed by Noothan Krishnan</div>
