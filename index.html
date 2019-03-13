@@ -1,65 +1,33 @@
+<!--Author:Noothan Krishnan-->
+
 <!DOCTYPE html>
+
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <script src="./jsontotable.js"></script>
-    <script>
-    var auto;
-    </script>
-    <style>
-    .form-panel{
-        position:fixed;
-        left:0;
-        top:0;
-        width:97%;
-        background:#efefef;
-        padding:10px;
-        border:solid 1px #aaa;
-        box-shadow:3px 3px 3px #bbb;
-        font-family:arial;
-        font-size:1rem;
-        margin:0 5px
-    }
-    button {
-        font-size:1rem;
-        cursor:pointer
-    }
-    #url {
-            font-size:1rem; 
-            width:30%
-          }
-    .info {
-        font-size:0.8rem;
-        margin-top:10px
-    }
-    .author {
-        font-size:0.7rem;
-        color:#bbb;
-        text-align:right
-    }
-
-    .showdata {
-      margin-top:110px;
-    }
-    </style>
-   
 </head>
-<body>
-<div class='form-panel'>
-JSON URL: 
-<input  onClick="this.select()" onChange="doConvert()"  type="text" placeholder="enter the url" id="url">
-<button onClick="doConvert()">Show in Table</button>
-<button onClick="doReset()">Reset Sort</button>
-<button onClick="showDemo()">Show Demo</button>
-<div class='info'>
- This JavaScript utility accepts JSON data with one level and converts it 
- into easy to read HTML table. You can also sort the table by clicking
- on the column header. <br/>For this, all you need to do is just paste the JSON URL into
- the textbox and press enter.
-</div>
-<div class="author">Developed by Noothan Krishnan</div>
-</div>
 
-</div>
-      
-<div class="showdata"></div>    
+<body>
+    <div class='form-panel'>
+        
+      <label>JSON URL:</label>
+
+        <input onClick="this.select()" onChange="doConvert()" style="width:30%" type="text" placeholder="enter the url" id="url">
+        
+        <button onClick="doConvert()" class="btn-convert">Show in Table
+            <div class="load-icon"></div>
+        </button>
+        <button onClick="doReset()">Reset Sort</button>
+        <button onClick="showDemo()">Show Demo</button>
+
+        <div class='info'>
+            This JavaScript utility accepts JSON data with one level and converts it into an easy to read HTML table. You can also sort the table by clicking on the column header.
+            <br/>For this, all you need to do is just paste the JSON URL into the textbox and press enter.
+        </div>
+
+        <div class="author">Developed by Noothan Krishnan</div>
+
+    </div>
+
+    <div class="showdata"></div>
 </body>
