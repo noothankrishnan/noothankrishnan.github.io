@@ -38,6 +38,7 @@ function getData(url, mode=null) {
             if (this.status != 200) {
                 console.log('Error Code :', this.status);
             }
+            document.querySelector(".load-icon").classList.remove('lds-hourglass');
         }
 
     }
