@@ -1,0 +1,108 @@
+/* Author: Noothan Krishnan */
+
+.form-panel {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 98.1%;
+    background: #efefef;
+    padding: 10px;
+    border: solid 1px #aaa;
+    box-shadow: 3px 3px 3px #bbb;
+    font-family: arial;
+    font-size: 1rem;
+    margin: 0 5px;
+}
+
+.showdata {
+    margin-top: 115px;
+}
+
+button {
+	font-size: 1rem;
+	cursor: pointer
+}
+
+#url {
+	font-size: 1rem
+}
+
+.info {
+	margin-top: 10px;
+	font-size: 0.8rem
+}
+
+.author {
+	margin-top: 10px;
+	font-size: 0.7rem;
+	text-align: right;
+	color: #aaa;
+}
+
+.json-table {
+	border-collapse: collapse;
+	font-family: 'arial';
+	font-size: 0.8rem;
+	margin: 10px 0;
+}
+
+.json-table td, .json-table th {
+	border: solid 1px silver;
+	padding: 8px
+}
+
+.json-table th {
+	text-transform: capitalize;
+	color: #000;
+	background: #ddd;
+	cursor: pointer
+}
+
+.json-table tr:nth-child(even) {
+	background: #eee
+}
+
+.arrow-icon-asc::after {
+	content: '\25b2';
+	font-size: 0.6rem
+}
+
+.arrow-icon-desc::after {
+	content: "\25bc";
+	font-size: 0.6rem
+}
+
+.lds-hourglass {
+	display: inline-block;
+	position: relative;
+	width: 13px;
+	height: 11px;
+}
+
+.lds-hourglass:after {
+	content: " ";
+	display: block;
+	border-radius: 50%;
+	width: 0;
+	height: 0;
+	margin: 0px;
+	box-sizing: border-box;
+	border: 6px solid blue;
+	border-color: navy transparent black transparent;
+	animation: lds-hourglass 1.2s infinite;
+	font-size: 8rem;
+}
+
+@keyframes lds-hourglass {
+	0% {
+		transform: rotate(0);
+		animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+	}
+	50% {
+		transform: rotate(900deg);
+		animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+	}
+	100% {
+		transform: rotate(1800deg);
+	}
+}
