@@ -1,152 +1,140 @@
-// Developed by Noothan Krishnan
+// Author: Noothan Krishnan
 
 'use strict';
 
-var myJson, minus=1, plus=-1,unSortedJson=[],sortArrow='&#8659;';
+var auto, myJson, minus = 1,
+    plus = -1,
+    unSortedJson = [];
 
-function showDemo(){
-    var demoUrl="https://jsonplaceholder.typicode.com/posts";
-    document.querySelector('#url').value=demoUrl;
-    getData(demoUrl);
+function doConvert() {
+        getData(document.querySelector('#url').value);
 }
 
-function getData(url){
-    const xhrObj=new XMLHttpRequest();
-    xhrObj.open('GET',url);
+function onSuccess(obj) {
+    auto = JSON.parse(obj.responseText);
+    jsonToTable(auto, 'showdata');
+    document.querySelector(".load-icon").classList.remove('lds-hourglass');
+}
+
+function getData(url, mode=null) {
+    document.querySelector(".load-icon").classList.add('lds-hourglass');
+    if (document.querySelector('#url').value.length === 0) {
+        return;
+    }
+    const xhrObj = new XMLHttpRequest();
+    xhrObj.open('GET', url);
     xhrObj.send();
-  
-    xhrObj.onreadystatechange=function(){
-        if (this.readyState==4 && this.status==200){
-          auto=JSON.parse(this.responseText);
-          jsonToTable(auto,'showdata');
-        }
-        else {
-            if (this.status!=200){
+    xhrObj.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            if (!mode) {
+                onSuccess(this);   
+            } else {
+                setTimeout(() => {
+                    onSuccess(this);
+                }, 1500);
+            }
+
+        } else {
+            if (this.status != 200) {
                 console.log('Error Code :', this.status);
             }
         }
+
     }
-   
 }
 
-
-function jsonToTable(json, element,mode='unsorted'){
- 
-    let table, tableHeader, tableBody;
-    myJson=[...json];
-
-    if (mode!='sorted'){
-        unSortedJson=[...json];
-    }
+function jsonToTable(json, element, mode = 'unsorted') {
+        let table, tableHeader, tableBody;
+        myJson = [...json];
     
-    tableHeader=constructHeader(myJson);
-    tableBody=constructTableBody(myJson);
-    table=tableHeader+tableBody;
-    document.querySelector('.'+element).innerHTML=table;
-}
-
-function constructHeader(json){
-    let tableHeader='', headerRowItem="",thClass='' ;
-    headerRowItem+="<th>Sl.No.</th>";
-    
-    tableHeader=`<style>
-        table {
-            border-collapse:collapse;
-            font-family: 'arial';
-            font-size:0.8rem;
-            margin:10px 0; 
+        if (mode != 'sorted') {
+            unSortedJson = [...json];
         }
-            td,th {border:solid 1px silver;padding:8px;}
-            th {text-transform:capitalize;color:#000;background:#ddd;cursor:pointer}
-            tr:nth-child(even) {background:#eee}
-            .arrow-icon-asc::after { 
-                content: "\u25b2";
-                font-size:0.6rem
-              }
-              .arrow-icon-desc::after { 
-                content: "\u25bc";
-                font-size:0.6rem
-              }
-    </style>`;
+    
+        tableHeader = constructHeader(myJson);
+        tableBody = constructTableBody(myJson);
+        table = tableHeader + tableBody;
+        document.querySelector('.' + element).innerHTML = table;
+    
+}
 
-    for (let props in json[0]){
-        thClass=props.replace(/[\s\.]/g,'');
-        headerRowItem+="<th title='Click to sort this column' class='" + thClass + "' onclick='doSort(this)'>"+props+"</th>";
+function showDemo() {
+    document.querySelector('.showdata').innerHTML = "";
+    var demoUrl = "https://jsonplaceholder.typicode.com/posts";
+    document.querySelector('#url').value = demoUrl;
+    getData(demoUrl, 'demo');
+}
+
+function doReset() {
+    if (document.querySelector('#url').value.length > 0) {
+        jsonToTable(unSortedJson, 'showdata');
+    }
+}
+
+function constructHeader(json) {
+    let tableHeader = '',
+        headerRowItem = "",
+        thClass = '';
+    headerRowItem += "<th>Sl.No.</th>";
+
+    for (let props in json[0]) {
+        thClass = props.replace(/[\s\.]/g, '');
+        headerRowItem += "<th title='Click to sort this column' class='" + thClass + "' onclick='doSort(this)'>" + props + "</th>";
     }
 
-    tableHeader+='<table class="jsontotable"><tr>'+headerRowItem;
+    tableHeader = '<table class="json-table"><tr>' + headerRowItem;
     return tableHeader;
 }
 
-function doConvert(){
-   getData(document.querySelector('#url').value);
-}
+function doSort(obj) {
 
-function doReset(){
-    jsonToTable(unSortedJson,'showdata');
-}
+    var column = obj.innerHTML;
 
-function doSort(obj){
+    if (minus === 1) {
+        minus = -1;
+        plus = 1;
 
-    var column=obj.innerHTML;
-
-    //var column=(obj.innerHTML).substr(0,obj.innerHTML.length-1);
-
-    //columncolumn.substr(0,column.length-1));
-
-   
-
-    if (minus===1){
-        minus=-1;
-        plus=1;
-        
+    } else {
+        minus = 1;
+        plus = -1;
     }
-    else {
-        minus=1;
-        plus=-1;
-    }
-    
-    myJson.sort(function(a,b){
-        var returnVal=0;
-        
-        if (a[column] && b[column] && (a[column].toString().toLowerCase()<b[column].toString().toLowerCase())){
-            returnVal= minus;
+
+    myJson.sort(function(a, b) {
+        var returnVal = 0;
+
+        if (a[column] && b[column] && (a[column].toString().toLowerCase() < b[column].toString().toLowerCase())) {
+            returnVal = minus;
+        } else if (a[column] && b[column] && (a[column].toString().toLowerCase() > b[column].toString().toLowerCase())) {
+            returnVal = plus;
         }
-        else if (a[column] && b[column] && (a[column].toString().toLowerCase()>b[column].toString().toLowerCase())){
-            returnVal= plus;
-        }
-       
-         return returnVal;
+
+        return returnVal;
 
     });
-    jsonToTable(myJson,'showdata','sorted');
+    jsonToTable(myJson, 'showdata', 'sorted');
 
-    var col=column.replace(/\s/g,'');
-    col=col.replace(/\./g,'');
-   
-   document.querySelector("."+col).style.color="blue";
+    var col = column.replace(/\s/g, '');
+    col = col.replace(/\./g, '');
 
-   if (minus===-1){
-    document.querySelector("."+col).classList.add('arrow-icon-asc');
-   }
-   else {
-    document.querySelector("."+col).classList.add('arrow-icon-desc');
-   }
- 
-   //sortArrow='⇓';
+    document.querySelector("." + col).style.color = "blue";
+
+    if (minus === -1) {
+        document.querySelector("." + col).classList.add('arrow-icon-asc');
+    } else {
+        document.querySelector("." + col).classList.add('arrow-icon-desc');
+    }
+
 }
 
-function constructTableBody(json){
-    let rowItem='',ctr=0;
-    json.forEach(function(record,index){
-        rowItem+="<td>"+(index+1)+".</td>";
-        for (let props in record){
-            rowItem+="<td>"+record[props]+"</td>";
+function constructTableBody(json) {
+    let rowItem = '',
+        ctr = 0;
+    json.forEach(function(record, index) {
+        rowItem += "<td>" + (index + 1) + ".</td>";
+        for (let props in record) {
+            rowItem += "<td>" + record[props] + "</td>";
         }
-        rowItem='<tr>'+rowItem + '</tr>'
+        rowItem = '<tr>' + rowItem + '</tr>'
     })
     return rowItem;
 }
-
-
-
