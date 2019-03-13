@@ -37,9 +37,10 @@ function getData(url, mode=null) {
         } else {
             if (this.status != 200) {
                 console.log('Error Code :', this.status);
+                document.querySelector(".load-icon").classList.remove('lds-hourglass');
+                document.querySelector('.showdata').innerHTML = "";
             }
-            document.querySelector(".load-icon").classList.remove('lds-hourglass');
-            document.querySelector('.showdata').innerHTML = "";
+            
         }
 
     }
