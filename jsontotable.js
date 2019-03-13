@@ -3,7 +3,7 @@
 'use strict';
 
 var auto, myJson, minus = 1,
-    plus = -1,
+    plus = -1,error=0,
     unSortedJson = [];
 
 function doConvert() {
@@ -17,10 +17,15 @@ function onSuccess(obj) {
 }
 
 function getData(url, mode=null) {
-    document.querySelector(".load-icon").classList.add('lds-hourglass');
+    error=0;
+    document.querySelector('.error').innerHTML = "";
     if (document.querySelector('#url').value.length === 0) {
+        document.querySelector('.showdata').innerHTML = "";
+        document.querySelector('.error').innerHTML = "Please enter the URL!";
+        document.querySelector('#url').focus();
         return;
     }
+    document.querySelector(".load-icon").classList.add('lds-hourglass');
     const xhrObj = new XMLHttpRequest();
     xhrObj.open('GET', url);
     xhrObj.send();
@@ -36,9 +41,13 @@ function getData(url, mode=null) {
 
         } else {
             if (this.status != 200) {
+                error=1;
                 console.log('Error Code :', this.status);
                 document.querySelector(".load-icon").classList.remove('lds-hourglass');
                 document.querySelector('.showdata').innerHTML = "";
+                document.querySelector('.error').innerHTML = "&#9888; Resource Not Found!";
+                unSortedJson=[];
+                document.querySelector('#url').select();
             }
             
         }
@@ -69,7 +78,7 @@ function showDemo() {
 }
 
 function doReset() {
-    if (document.querySelector('#url').value.length > 0) {
+    if (document.querySelector('#url').value.length > 0 && error===0) {
         jsonToTable(unSortedJson, 'showdata');
     }
 }
@@ -110,9 +119,7 @@ function doSort(obj) {
         } else if (a[column] && b[column] && (a[column].toString().toLowerCase() > b[column].toString().toLowerCase())) {
             returnVal = plus;
         }
-
         return returnVal;
-
     });
     jsonToTable(myJson, 'showdata', 'sorted');
 
