@@ -15,7 +15,7 @@
 }
 
 .showdata {
-    margin-top: 157px;
+    margin-top: 165px;
 }
 
 button, input[type="file" i] {
@@ -24,7 +24,12 @@ button, input[type="file" i] {
 }
 
 #url {
-	font-size: 1rem
+	font-size: 0.9rem;
+    width: 33%;
+    height: 20px;
+    position: relative;
+    top: 9px;
+    font-family: arial;
 }
 
 .info {
@@ -36,7 +41,7 @@ button, input[type="file" i] {
 	margin-top: 10px;
 	font-size: 0.7rem;
 	text-align: right;
-	color: #aaa;
+	color: #777;
 }
 
 .json-table {
