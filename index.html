@@ -10,18 +10,21 @@
 <body>
     <div class='form-panel'>
       <div class='heading'>JSON to HTML Table</div>
-      <label>JSON URL:</label>
+      <label>Specify a JSON Source:</label>
 
-        <input onClick="this.select()" onChange="doConvert()" style="width:30%" type="text" placeholder="enter the url" id="url">
-        <button onClick="doConvert()" class="btn-convert">Enter &#8629;&nbsp;<div class="load-icon"></div></button>
+        <textarea row="1" onClick="this.select()" type="text" placeholder="Enter a JSON URL or paste JSON data here or Choose a JSON data file from your disk" id="url"></textarea>
+
+        <button onClick="doRoute()" class="btn-convert">Submit&nbsp;<div class="load-icon"></div></button>
         <button onClick="showDemo()">Show Demo</button>
         <button onClick="doReset()">Reset Sort</button>
-        <input name="file" type="file" id="files" class="form-control" value="" onChange="doExtract();">
+        <span class="choose-load-icon"></span>
+        <input name="file" type="file" id="files" class="form-control" onChange="doExtract();">
+        
        
 
         <div class='info'>
             This JavaScript utility accepts JSON data with one level and converts it into an easy to read HTML table. You can also sort the table by clicking on the column header.
-            <br/>For this, all you need to do is either paste a JSON URL into the textbox and press enter or choose a JSON data file from your hard disk.
+            <br/>For this, all you need to do is either paste a JSON URL into the textbox, or paste a JSON data directly into the textbox or choose a JSON data file from your hard disk.
         </div>
 
 
