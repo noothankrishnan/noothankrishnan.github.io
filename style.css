@@ -48,7 +48,7 @@ button, input[type="file" i] {
 	border-collapse: collapse;
 	font-family: 'arial';
 	font-size: 0.8rem;
-	margin: 10px 0;
+	margin: 10px auto;
 }
 
 .json-table td, .json-table th {
