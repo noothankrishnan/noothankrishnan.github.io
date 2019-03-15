@@ -1,10 +1,10 @@
 [
-    {
-       "make":"Toyota",
-       "model":"Camry Hybrid",
-       "year":"2019",
-       "combined mpg":"52"
-    },
+   {
+      "make":"Ford",
+      "model":"Fusion Energi",
+      "year":"2019",
+      "combined mpg":"42"
+   },
     {
        "make":"Hyundai",
        "model":"Accent",
@@ -24,6 +24,12 @@
        "combined mpg":"34"
     },
     {
+      "make":"Toyota",
+      "model":"Camry Hybrid",
+      "year":"2019",
+      "combined mpg":"52"
+   },
+    {
        "make":"Buick",
        "model":"LaCrosse",
        "year":"2019",
@@ -34,12 +40,6 @@
        "model":"Malibu",
        "year":"2019",
        "combined mpg":"32"
-    },
-    {
-       "make":"Ford",
-       "model":"Fusion Energi",
-       "year":"2019",
-       "combined mpg":"42"
     },
     {
        "make":"Honda",
