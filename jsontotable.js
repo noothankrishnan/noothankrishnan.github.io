@@ -3,7 +3,7 @@
 'use strict';
 
 var auto, myJson, minus = 1,
-    plus = -1,error=0,
+    plus = -1,error=0,sortStatus=false,
     unSortedJson = [];
 
 function doRoute(){
@@ -11,7 +11,6 @@ function doRoute(){
     document.querySelector('.error').innerHTML="";
     var str=document.querySelector('#url').value;
 
-    console.log('str.trim().substr(0,4) ', str.trim().substr(0,4));
     if (str.trim().substr(0,4)==='http'){
         doConvert(str);
     }
@@ -98,7 +97,6 @@ function onSuccess(obj, jsonData=null) {
 function getData(url, mode=null) {
     error=0;
     document.querySelector('.error').innerHTML = "";
-    console.log('url len ', document.querySelector('#url').value.length);
     if (document.querySelector('#url').value.length === 0) {
         document.querySelector('.showdata').innerHTML = "";
         document.querySelector('.error').innerHTML = "Please enter the URL!";
@@ -122,7 +120,6 @@ function getData(url, mode=null) {
         } else {
             if (this.status != 200) {
                 error=1;
-                console.log('Error Code :', this.status);
                 document.querySelector(".load-icon").classList.remove('lds-hourglass');
                 document.querySelector('.showdata').innerHTML = "";
                 document.querySelector('.error').innerHTML = "&#9888; Resource Not Found!";
@@ -164,17 +161,17 @@ function doReset() {
 }
 
 function constructHeader(json) {
-    let tableHeader = '',
+    let tableHeader = '',resetHeader,
         headerRowItem = "",
         thClass = '';
-    headerRowItem += "<th>Sl.No.</th>";
+    headerRowItem += "<tr><th>Sl.No.</th>";
 
     for (let props in json[0]) {
         thClass = props.replace(/[\s\.]/g, '');
-        headerRowItem += "<th title='Click to sort this column' class='" + thClass + "' onclick='doSort(this)'>" + props + "</th>";
+        headerRowItem += "<th title='Click to sort this column' class='" + thClass + "' onclick='doSort(this)'>" + props + "</td>";
     }
-
-    tableHeader = '<table class="json-table"><tr>' + headerRowItem;
+    resetHeader='<caption id="caption" onClick="doReset()" title="Click to reset the sort" class="reset-header">Reset Sort</caption>';
+    tableHeader = '<table class="json-table">'+resetHeader + headerRowItem;
     return tableHeader;
 }
 
@@ -201,7 +198,11 @@ function doSort(obj) {
         }
         return returnVal;
     });
+
+   
     jsonToTable(myJson, 'showdata', 'sorted');
+
+    document.querySelector("#caption").classList.add('sorted');
 
     var col = column.replace(/\s/g, '');
     col = col.replace(/\./g, '');
