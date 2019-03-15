@@ -82,5 +82,11 @@
        "model":"S60",
        "year":"2019",
        "combined mpg":"28"
-    }
+    },
+    {
+        "make":"Mitsubishi",
+        "model":"Mirage G4",
+        "year":"2019",
+        "combined mpg":"35"
+     }
  ]
