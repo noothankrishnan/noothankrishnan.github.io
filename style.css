@@ -86,6 +86,29 @@ padding-bottom:3px;
 border-bottom:solid 1px #aaa
 }
 
+.reset-header {
+	background: #bbb;
+    padding: 5px;
+    font-size: 0.8rem;
+    font-weight: bold;
+	cursor: pointer;
+	color:#000
+}
+
+.show-demo:link,.show-demo:visited, .show-demo:active{
+	font-size: 0.8rem;
+    color: blue;
+}
+
+.show-demo:hover {
+	font-size: 0.8rem;
+	color:blue
+}
+
+.sorted {
+	color:blue
+}
+
 .error {
     color: red;
     font-size: 0.8rem;
