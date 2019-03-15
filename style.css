@@ -150,3 +150,17 @@ border-bottom:solid 1px #aaa
 		transform: rotate(1800deg);
 	}
 }
+
+@media only screen and (max-width : 720px) {
+	.form-panel {
+		position: sticky;
+		width: 177%;
+	}
+
+	.showdata {
+		margin-top:0
+	}
+
+}
+
+
