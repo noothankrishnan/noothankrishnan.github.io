@@ -149,7 +149,8 @@ function jsonToTable(json, element, mode = 'unsorted') {
 
 function showDemo() {
     document.querySelector('.showdata').innerHTML = "";
-    var demoUrl = "https://jsonplaceholder.typicode.com/posts";
+   // var demoUrl = "https://jsonplaceholder.typicode.com/posts";
+    var demoUrl = "./auto.json";
     document.querySelector('#url').value = demoUrl;
     getData(demoUrl, 'demo');
 }
