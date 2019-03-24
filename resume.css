@@ -1,6 +1,5 @@
 body {
     margin:10px auto;
-    max-width: 910px;
     color:#444;
     font-family:arial;
     font-size:0.8rem;
@@ -127,9 +126,11 @@ div [class^="icon"] {
     line-height:1.2rem 
 }
 .page{
-    test-font-size:0.9rem;
-    background:#fff;
-    border:solid 10px white;
+    background: #fff;
+    border: solid 10px white;
+    max-width: 910px;
+    margin: 0 auto;
+    width: fit-content;
 }
 .sub-head {
     color:#000 
