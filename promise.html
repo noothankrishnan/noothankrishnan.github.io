@@ -36,7 +36,7 @@
         .then(function(response) {
         
             datasetId = JSON.parse(response).datasetId;
-            document.write("Fetch datasetId ", datasetId);
+            document.write("<br><br>Fetch datasetId ", datasetId);
             getDataSet('https://vautointerview.azurewebsites.net/api/' + datasetId + '/vehicles')
                 .then(function(getVehicles) {
                     return getVehicles;
@@ -44,8 +44,8 @@
                 .then(function(response) {
 
                     vehicles = JSON.parse(response).vehicleIds;
-                    document.write("<br>Fetch vehicles using datasetid ", vehicles);
-                    document.write("<br>Fetch vehicle info using datasetid and vehicle Id ", vehicles);
+                    document.write("<br><br>Fetch vehicles using datasetid ", vehicles);
+                    document.write("<br><br>Fetch vehicle info using datasetid and vehicle Id ", vehicles);
                     vehicles.forEach(function(vehicleId) {
                         getDataSet('https://vautointerview.azurewebsites.net/api/' + this.dataSetId + '/vehicles/' + vehicleId)
                             .then(function(vehicleInfo) {
