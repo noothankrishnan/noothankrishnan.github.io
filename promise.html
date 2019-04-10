@@ -45,13 +45,13 @@
 
                     vehicles = JSON.parse(response).vehicleIds;
                     document.write("<br><br>Fetch vehicles using datasetid ", vehicles);
-                    document.write("<br><br>Fetch vehicle info using datasetid and vehicle Id ", vehicles);
+                    document.write("<br><br>Fetch vehicle info using datasetid and vehicle Id ", vehicles+"<br><br>");
                     vehicles.forEach(function(vehicleId) {
                         getDataSet('https://vautointerview.azurewebsites.net/api/' + this.dataSetId + '/vehicles/' + vehicleId)
                             .then(function(vehicleInfo) {
                                 return vehicleInfo;
                             }).then(function(response) {
-                                document.write("<br><br>" + response)
+                                document.write("<br>" + response)
                             });
                     }.bind({
                         dataSetId: datasetId
