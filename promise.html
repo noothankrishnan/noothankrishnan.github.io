@@ -16,14 +16,13 @@
         }
     }
 
-    //const userdataPromise=new Promise(httpResponse);
-
     function getDataSet(url) {
         return new Promise(httpResponse.bind({
             url: url
-        }));
+        })).catch(function(error){
+          document.write("<h6 style='color:red'> " +error + "</h6");
+            });
     }
-
 
     var vehicles;
     var dataSetId = null;
@@ -58,8 +57,7 @@
                     }));
                 })
 
-        });
-
+        })
 
     console.log("print first");
 </script>
