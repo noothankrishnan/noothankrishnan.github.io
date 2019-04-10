@@ -28,7 +28,7 @@
     var vehicles;
     var dataSetId = null;
 
-    getDataSet('http://vautointerview.azurewebsites.net/api/datasetId')
+    getDataSet('https://vautointerview.azurewebsites.net/api/datasetId')
         .then(function(response) {
         
             return response;
@@ -37,7 +37,7 @@
         
             datasetId = JSON.parse(response).datasetId;
             document.write("Fetch datasetId ", datasetId);
-            getDataSet('http://vautointerview.azurewebsites.net/api/' + datasetId + '/vehicles')
+            getDataSet('https://vautointerview.azurewebsites.net/api/' + datasetId + '/vehicles')
                 .then(function(getVehicles) {
                     return getVehicles;
                 })
@@ -47,7 +47,7 @@
                     document.write("<br>Fetch vehicles using datasetid ", vehicles);
                     document.write("<br>Fetch vehicle info using datasetid and vehicle Id ", vehicles);
                     vehicles.forEach(function(vehicleId) {
-                        getDataSet('http://vautointerview.azurewebsites.net/api/' + this.dataSetId + '/vehicles/' + vehicleId)
+                        getDataSet('https://vautointerview.azurewebsites.net/api/' + this.dataSetId + '/vehicles/' + vehicleId)
                             .then(function(vehicleInfo) {
                                 return vehicleInfo;
                             }).then(function(response) {
@@ -61,5 +61,5 @@
         });
 
 
-    console.log("Print first");
+    console.log("print first");
 </script>
