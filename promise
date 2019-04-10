@@ -1,0 +1,65 @@
+<!doctype html>
+
+<script>
+    function httpResponse(resolve, reject) {
+        var xhrObj = new XMLHttpRequest();
+        xhrObj.open('GET', this.url);
+        xhrObj.send();
+        xhrObj.onreadystatechange = function() {
+            if (xhrObj.readyState === 4) {
+                if (this.status === 200) {
+                    resolve(this.response);
+                } else {
+                    reject(new Error(this.statusText));
+                }
+            }
+        }
+    }
+
+    //const userdataPromise=new Promise(httpResponse);
+
+    function getDataSet(url) {
+        return new Promise(httpResponse.bind({
+            url: url
+        }));
+    }
+
+
+    var vehicles;
+    var dataSetId = null;
+
+    getDataSet('http://vautointerview.azurewebsites.net/api/datasetId')
+        .then(function(response) {
+        
+            return response;
+        })
+        .then(function(response) {
+        
+            datasetId = JSON.parse(response).datasetId;
+            document.write("Fetch datasetId ", datasetId);
+            getDataSet('http://vautointerview.azurewebsites.net/api/' + datasetId + '/vehicles')
+                .then(function(getVehicles) {
+                    return getVehicles;
+                })
+                .then(function(response) {
+
+                    vehicles = JSON.parse(response).vehicleIds;
+                    document.write("<br>Fetch vehicles using datasetid ", vehicles);
+                    document.write("<br>Fetch vehicle info using datasetid and vehicle Id ", vehicles);
+                    vehicles.forEach(function(vehicleId) {
+                        getDataSet('http://vautointerview.azurewebsites.net/api/' + this.dataSetId + '/vehicles/' + vehicleId)
+                            .then(function(vehicleInfo) {
+                                return vehicleInfo;
+                            }).then(function(response) {
+                                document.write("<br>" + response)
+                            });
+                    }.bind({
+                        dataSetId: datasetId
+                    }));
+                })
+
+        });
+
+
+    console.log("Print first");
+</script>
