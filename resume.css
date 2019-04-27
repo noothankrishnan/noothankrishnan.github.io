@@ -11,6 +11,12 @@ img {
    /* box-shadow:1px 1px 1px 1px #aaa;
     */
 }
+
+
+.main-content {
+    margin-left:0.5rem
+}
+
 .panel-header {
     font-weight:bold;
     text-align:left;
@@ -104,6 +110,11 @@ div [class^="icon"] {
     margin:20px;
     background-color:gold;
 }
+
+.email-icon a:link, .email-icon a:active, .email-icon a:hover {
+  font-size:0.73rem
+}
+
 .email-icon::before {
     content:"✉:";
     color:#444;
