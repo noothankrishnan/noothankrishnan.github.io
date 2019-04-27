@@ -1,0 +1,135 @@
+<!--Author:Noothan Krishnan-->
+
+<!DOCTYPE html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./jsontotable.js"></script>
+</head>
+
+<body>
+    <div class='form-panel'>
+      <div class='heading'>JSON to HTML Table</div>
+      <label>Specify a JSON Source:</label>
+
+        <textarea row="1" onClick="this.select()" type="text" placeholder="Enter a JSON URL or paste JSON data here or Choose a JSON data file from your disk" id="url"></textarea>
+
+        <button onClick="doRoute()" class="btn-convert">Submit&nbsp;<div class="load-icon"></div></button>
+       
+        <span class="choose-load-icon"></span>
+        <input name="file" type="file" id="files" class="form-control" onChange="doExtract();">
+        <!-- <button onClick="showDemo()">Show Demo</button> -->
+        <a class="show-demo" href="javascript:showDemo();">Show Demo</a>
+       
+
+        <div class='info'>
+            This JavaScript utility accepts JSON data with one level and converts it into an easy to read HTML table. You can also sort the table by clicking on the column header.
+            <br/>For this, all you need to do is either paste a JSON URL into the textbox, or paste a JSON data directly into the textbox or choose a JSON data file from your hard disk.
+        </div>
+
+
+        <div class='error'></div>
+
+        <div class="author">Developed by Noothan Krishnan</div>
+
+    </div>
+
+    <div class="showdata">
+        <pre>
+Sample JSON data for demo: (Copy this JSON data, paste it in the above textbox and Submit)
+[
+   {
+      "make":"Ford",
+      "model":"Fusion Energi",
+      "year":"2019",
+      "combined mpg":"42"
+   },
+    {
+       "make":"Hyundai",
+       "model":"Accent",
+       "year":"2019",
+       "combined mpg":"31"
+    },
+    {
+       "make":"Audi",
+       "model":"A3",
+       "year":"2019",
+       "combined mpg":"29"
+    },
+    {
+       "make":"Volkswagen",
+       "model":"Jetta",
+       "year":"2019",
+       "combined mpg":"34"
+    },
+    {
+      "make":"Toyota",
+      "model":"Camry Hybrid",
+      "year":"2019",
+      "combined mpg":"52"
+   },
+    {
+       "make":"Buick",
+       "model":"LaCrosse",
+       "year":"2019",
+       "combined mpg":"29"
+    },
+    {
+       "make":"Chevrolet",
+       "model":"Malibu",
+       "year":"2019",
+       "combined mpg":"32"
+    },
+    {
+       "make":"Honda",
+       "model":"Accord Hybrid",
+       "year":"2019",
+       "combined mpg":"48"
+    },
+    {
+       "make":"Accura",
+       "model":"ILX",
+       "year":"2019",
+       "combined mpg":"28"
+    },
+    {
+       "make":"BMW",
+       "model":"3 Series",
+       "year":"2019",
+       "combined mpg":"27"
+    },
+    {
+       "make":"Mercedez",
+       "model":"Benz C-Class",
+       "year":"2019",
+       "combined mpg":"27"
+    },
+    {
+       "make":"Toyota",
+       "model":"Avalon Hybrid",
+       "year":"2019",
+       "combined mpg":"43"
+    },
+    {
+       "make":"Cadillac",
+       "model":"ATS",
+       "year":"2018",
+       "combined mpg":"25"
+    },
+    {
+       "make":"Volvo",
+       "model":"S60",
+       "year":"2019",
+       "combined mpg":"28"
+    },
+    {
+        "make":"Mitsubishi",
+        "model":"Mirage G4",
+        "year":"2019",
+        "combined mpg":"35"
+     }
+ ]
+</pre>
+    </div>
+</body>
