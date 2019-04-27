@@ -32,11 +32,19 @@ img {
     list-style-type:none;
     line-height:1rem;
 }
+
+.work-summary {
+    margin-top:0.3rem
+}
+
+.work-summary li {
+    line-height:1.3rem
+}
+
 .panel-list {
     list-style-type:unset;
     display:block;
     padding:0;
-    test-test-font-size: 0.8rem;
     margin: 3px 0 0 0;
 }
 .content-header {
@@ -142,12 +150,14 @@ div [class^="icon"] {
     font-size:0.9rem;
     font-weight:bold 
 }
-.email-icon a:link, a:visited{
+
+a:link, a:visited {
     color:#0000b2 
 }
-.email-icon a:hover{
+a:hover {
     color:blue 
 }
+
 .experience {
     display:flex 
 }
@@ -170,7 +180,7 @@ div [class^="icon"] {
     padding-left: 12px;
 }
 .expertize li {
-    line-height:18px 
+    line-height:1.3rem
 }
 .title {
     font-size:1rem;
@@ -223,3 +233,6 @@ div [class^="icon"] {
     /* cursor:pointer; */
 }
 
+.footer span {
+    transform:rotate(45deg)
+}
