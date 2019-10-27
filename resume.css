@@ -215,9 +215,11 @@ a:hover {
     line-height:20px 
 }
 
+
 .technical-proficiencies, .technical-proficiencies div {
        display: grid
 }
+
 .awards {
     display: grid;
     grid-row-gap: 5px;
