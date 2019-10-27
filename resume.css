@@ -217,7 +217,8 @@ a:hover {
 
 
 .technical-proficiencies, .technical-proficiencies div {
-       display: grid
+       display: grid;
+    border:solid 1px blue
 }
 
 .awards {
