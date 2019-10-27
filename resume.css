@@ -214,9 +214,9 @@ a:hover {
 .employment-summary div {
     line-height:20px 
 }
-.technical-proficiencies div {
-       display: grid;
-    grid-row-gap: 5px;
+
+.technical-proficiencies, .technical-proficiencies div {
+       display: grid
 }
 .awards {
     display: grid;
