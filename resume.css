@@ -180,7 +180,8 @@ a:hover {
 .employment-summary {
     display:grid;
     grid-template-columns:auto auto auto;
-    grid-column-gap:5px 
+    grid-column-gap:5px;
+    grid-row-gap:2px
 }
 .col-left ul {
     margin: 0;
