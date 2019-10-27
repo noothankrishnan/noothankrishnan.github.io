@@ -216,6 +216,7 @@ a:hover {
 }
 
 .technical-proficiencies{
+   margin-top:0.3rem;
    grid-row-gap:7px
     
 }
