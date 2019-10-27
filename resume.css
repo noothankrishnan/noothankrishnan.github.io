@@ -40,7 +40,9 @@ img {
 }
 
 .work-summary {
-    margin-top:0.3rem
+    margin-top:0.3rem;
+    display: grid;
+    grid-row-gap: 2px;
 }
 
 .work-summary li {
@@ -213,7 +215,12 @@ a:hover {
     line-height:20px 
 }
 .technical-proficiencies div {
-    line-height:1.3rem 
+       display: grid;
+    grid-row-gap: 5px;
+}
+.awards {
+    display: grid;
+    grid-row-gap: 5px;
 }
 .awards, .projects {
     margin:0;
