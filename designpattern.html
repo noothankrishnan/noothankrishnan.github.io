@@ -330,6 +330,32 @@ let icon=getVal(getVal(dataObj,'details'), 'icon',0)
 console.log("icon ", icon);
 console.log("team lead", make);
   </textarea>
+
+  <h2>Helper Function</h2>
+  <textarea readonly>
+    import { Dimensions } from 'react-native';
+
+    function GetDeviceFontSize(fontSize) {
+    
+        if (Math.round(Dimensions.get('screen').width) <= 300) {
+            fontSize = fontSize - 3;
+        }
+        else
+            if (Math.round(Dimensions.get('screen').width) <= 400) {
+                fontSize = fontSize - 1;
+            }
+    
+    
+        return fontSize;
+    }
+    
+    export default GetDeviceFontSize;
+    
+    Usage:
+    import GetDeviceFontSize from '../misc/GetDeviceFontSize';
+    
+    fontSize: GetDeviceFontSize(13)
+  </textarea>
   
 
 </body>
