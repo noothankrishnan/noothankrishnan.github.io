@@ -114,6 +114,52 @@ apiFetch(url, 'GET').then(data=>{
     console.log('$$$####', resp);
 
   });
+
+  const updateResoure=()=>{
+
+    const url=endPoints.update_resource;
+  
+    const body = {
+      id: 1,
+      title: 'foo',
+      body: 'bar',
+      userId: 1
+    };
+  
+    apiFetch(url,'PUT', body).then(resp=>{
+  
+      console.log('$$$####', resp);
+  
+    });
+  
+  }
+  
+   const updateResoure=async()=>{
+
+       const body = {
+         id: 1,
+         title: 'foo',
+         body: 'bar',
+         userId: 1
+       };
+    
+       const url=endPoints.update_resource;
+      const resp=await apiFetch(url,'PUT', body);
+    
+       console.log('POST response ', resp);
+    
+     }
+    
+  Try:
+  let response = await fetch("/charge/pay", {
+    method: "POST",
+    headers: {
+       "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
+}).catch(function(error) {
+    // Error handling here!
+});
   
 </textarea>
 
