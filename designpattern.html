@@ -289,6 +289,46 @@ export default About;
 
 
   </textarea>
+
+<h2>Get value from JSON</h2>
+  <textarea readonly>
+    let i=23,z;
+
+
+let dataObj=[
+    {
+        teamLeadId:'232322323',
+        details:[
+               {
+                icon:'#ff00ff',
+                color:'#ffcc00'
+            }
+        ]
+},
+    {
+        make:'Honda'
+    },
+
+];
+
+function getVal(obj, prop, defVal=''){
+
+    let resultObj=defVal;
+
+        if (obj && obj.length>0 && obj[0][prop]){
+            resultObj=obj[0][prop];
+        }
+
+    return resultObj;
+}
+
+
+let make=getVal(dataObj, 'teamLeadId', '');
+let icon=getVal(getVal(dataObj,'details'), 'icon',0)
+
+console.log("icon ", icon);
+console.log("team lead", make);
+  </textarea>
   
 
 </body>
