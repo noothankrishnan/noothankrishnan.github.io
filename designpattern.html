@@ -49,6 +49,7 @@ textarea {
 </textarea>
 -->
 
+
 <h2>React Component</h2>
 <textarea readonly>
 
@@ -82,6 +83,28 @@ render(){
   Usage:
   import About from './components/About'
 </textarea>
+
+
+<h2>Fetch API</h2>
+<textarea readonly>
+  const apiFetch=(url, method, data=null)=>{
+   
+    const init={
+        method:method,
+        body:data?JSON.stringify(data):data,
+        headers: { 
+          "Content-Type": "application/json",
+        }
+    }
+  
+    return fetch(url, init).then(response=>response.json());
+  
+    }
+    
+    export default apiFetch;
+  
+</textarea>
+
 
 <h2>asyn-await</h2>
 
