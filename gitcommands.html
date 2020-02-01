@@ -53,7 +53,106 @@ textarea {
 <h2>git commands</h2>
 <textarea readonly>
 
-
+  git flow - working
+  ===============================================
+  1. git clone <repo> (git checkout master if not)
+  2. git pull origin master
+  3. git branch -a
+  4. git checkout samefeaturebranchname (use -b for local branch)
+  5. Make changes to the file. git add filename  
+  6. git commit -m "changes made"
+  7. git push origin featurebranchname
+  ===============================================
+  
+  take the latest from develop branch and merge it to feature branch locally created and pushed
+  1. git pull origin develop
+  2. Fix merge conflict from vscode by accepting the change
+  3. git pull
+  4. git push
+  
+  git rename branch
+  ===============================================
+  1. Rename your local branch.
+  If you are on the branch you want to rename:
+  
+  git branch -m new-name
+  If you are on a different branch:
+  
+  git branch -m old-name new-name
+  2. Delete the old-name remote branch and push the new-name local branch.
+  
+  git push origin :old-name new-name
+  3. Reset the upstream branch for the new-name local branch.
+  Switch to the branch and then:
+  
+  git push origin -u new-name
+  
+  
+  when npm gets corrupt
+  sudo npm cache clean --force --unsafe-perm
+  
+  angular7 npm run build
+  
+  1. git clone <repo>
+  =====================================
+  git branch <new branchname>
+  2. git checkout <newly created branch> (Switch to an existing branch)
+  =====================================
+  git checkout -b <branch_name>
+  git add <name of the file>
+  git checkout style.css - Discard changes
+  git commit -m "added CommitTest.txt to the repo"
+  git push --set-upstream origin mybranch
+  git pull
+  
+  git pull origin feature-sass
+  
+  Reference
+  ==============================================================
+  (use "git add <file>..." to update what will be committed)
+    (use "git checkout -- <file>..." to discard changes in working directory)
+    no changes added to commit (use "git add" and/or "git commit -a")
+  
+  
+  remote: 
+  remote: Create a pull request for 'mybranch' on GitHub by visiting:
+  remote:      https://github.com/noothankrishnan/ritl/pull/new/mybranch
+  remote: 
+  To https://github.com/noothankrishnan/ritl.git
+   * [new branch]      mybranch -> mybranch
+  Branch 'mybranch' set up to track remote branch 'mybranch' from 'origin'.
+  
+  ==============================================================
+  If your Local branch and remote branch is the same name then you can just do it:
+  
+  git push origin branchName
+  When your local and remote branch name is different then you can just do it:
+  
+  git push origin localBranchName:remoteBranchName
+  ================================================
+  git checkout master
+  # fetch the latest changes from the remote git repository
+  git pull origin master
+  1. git clone <repo>
+  2. git checkout -b feature-sass
+  3. git pull origin feature-sass
+  4. git checkout -b mybranch
+  After making changes
+  5. git commit -a -m "describe changes on mybranch"
+  6. git checkout feature-sass
+  7. git merge remote-B
+  8. git push origin feature-sass
+  
+  git checkout -b remote-A
+  git pull origin remote-A
+  git checkout -b remote-B
+  make changes on remote-B
+  
+   git commit -a -m 'describe changes on remote-B branch'
+  
+   git checkout remote-A  
+   git merge remote-B  
+   git push origin remote-A
   </textarea>
   
 
