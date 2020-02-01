@@ -42,10 +42,8 @@ textarea {
 
     
   async componentDidMount(){
-
-
-
-    const promise=await fetch('https://reqres.in/api/users/2');
+    
+   const promise=await fetch('https://reqres.in/api/users/2');
     const promise2=await fetch('https://reqres.in/api/unknown/2');
 
     const data2=await promise2.json();
@@ -57,9 +55,7 @@ textarea {
         json2:data2.data.name
       }
     });
-  
     }
-
 </textarea>
   
   <h2>router</h2>
