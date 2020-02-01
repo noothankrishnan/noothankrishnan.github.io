@@ -73,9 +73,7 @@ render(){
 
   const About=(props)=>{
       console.log("props >>>", props.location.state.data.json)
-  
       return <div>About props: </div>
-  
   }
   
   export default About;
@@ -102,6 +100,20 @@ render(){
     }
     
     export default apiFetch;
+
+Usage:
+
+1. GET
+apiFetch(url, 'GET').then(data=>{
+    setState({stores:data.stores})
+  });
+
+2. POST
+  apiFetch(url,'PUT', body).then(resp=>{
+
+    console.log('$$$####', resp);
+
+  });
   
 </textarea>
 
