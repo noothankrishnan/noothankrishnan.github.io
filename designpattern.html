@@ -19,6 +19,9 @@ body {
   margin:0 auto
   }
 textarea {
+  color:#000;
+  font-weight: bold;
+    padding-left:10px;
     width: 98%;
     height: 350px;
     font-family: courier new;
@@ -35,7 +38,54 @@ textarea {
 </head>
 
 <body>
+
+
 <h1>Design Pattern</h1>
+
+<!--
+<h2>Heading</h2>
+<textarea readonly>
+
+</textarea>
+-->
+
+<h2>React Component</h2>
+<textarea readonly>
+
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import './index.css';
+  import App from './App';
+  import {BrowserRouter} from 'react-router-dom';
+
+class App extends React.Component {
+
+render(){
+  return(
+  <React.Fragment>
+    <JSX></JSX>
+  </React.Fragment>
+      )
+  }
+</textarea>
+
+<h2>Functional Component</h2>
+<textarea readonly>
+  import React from 'react';
+
+  const About=(props)=>{
+      console.log("props >>>", props.location.state.data.json)
+  
+      return <div>About props: </div>
+  
+  }
+  
+  export default About;
+
+  Usage:
+  import About from './components/About'
+</textarea>
+
 <h2>asyn-await</h2>
 
 <textarea readonly>
