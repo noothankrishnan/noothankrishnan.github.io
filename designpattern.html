@@ -59,6 +59,112 @@ textarea {
     }
 
 </textarea>
+  
+  <h2>router</h2>
+  <textarea readonly>
+ =========================================
+    index.js
+ =========================================
+    
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import {BrowserRouter} from 'react-router-dom';
+
+ReactDOM.render(
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>, 
+ document.getElementById('root'));
+
+ =========================================
+    app.js
+ =========================================
+import React from 'react';
+import './App.css';
+
+import { Link, Switch, Route} from 'react-router-dom';
+
+import Home from './components/Home'
+import About from './components/About'
+import Shop from './components/Shop'
+
+class App extends React.Component {
+
+state={
+  json:null, 
+  json2:null
+}
+
+async componentDidMount(){
+
+  const promise=await fetch('https://reqres.in/api/users/2');
+  const promise2=await fetch('https://reqres.in/api/unknown/2');
+
+  const data2=await promise2.json();
+  const data=await promise.json();
+
+
+  this.setState((state)=>{
+    return {
+      json:data.data.email,
+      json2:data2.data.name
+    }
+  });
+
+  }
+
+
+  render(){
+    return(
+
+<React.Fragment>
+<div>{this.state.json2}</div>
+<ul>
+  <li><Link to="/">Home</Link></li>
+<li><Link to={{pathname:'/about', 
+  state:{data:this.state}
+}}>About</Link>
+</li>
+<li> <Link to="/shop">Shop</Link></li>
+</ul>
+  
+      <Switch>
+          <Route path="/" component={Home} exact/>
+          <Route path="/about" component={About} exact/>
+          <Route path="/shop" component={Shop} exact/>
+      </Switch> 
+
+
+    </React.Fragment>
+    );
+      
+    }
+
+  }
+    export default App;
+ =========================================
+    about.js
+ =========================================
+
+import React from 'react';
+
+const About=(props)=>{
+    console.log("props >>>", props.location.state.data.json)
+
+    return <div>About props: </div>
+
+}
+
+export default About;
+
+
+
+
+  </textarea>
+  
 
 </body>
 </html>
+
