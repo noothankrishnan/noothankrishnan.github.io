@@ -16,7 +16,7 @@ body {
   }
 textarea {
 width:98%;
-border:solid 2px green;
+border:solid 2px silver;
 height:100px
 }
 
@@ -29,7 +29,26 @@ height:100px
 <h2>asyn-await</h2>
 
 <textarea>
-Test Page
+
+    
+  async componentDidMount(){
+
+
+
+    const promise=await fetch('https://reqres.in/api/users/2');
+    const promise2=await fetch('https://reqres.in/api/unknown/2');
+
+    const data2=await promise2.json();
+    const data=await promise.json();
+
+    this.setState((state)=>{
+      return {
+        json:data.data.email,
+        json2:data2.data.name
+      }
+    });
+  
+    }
 
 </textarea>
 
