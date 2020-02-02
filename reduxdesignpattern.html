@@ -291,6 +291,26 @@ const mapDespatchToProps=(dispatch)=>{
 
 export default connect(mapStateToProps, mapDespatchToProps) (ShoppingCart);
   </textarea>
+  
+  <h2>http</h2>
+  <textarea readonly>
+    
+const http=(url, method='GET', data=null)=>{
+   
+    const init={
+        method:method,
+        body:data?JSON.stringify(data):data,
+        headers: { 
+          "Content-Type": "application/json",
+        }
+    }
+
+    return fetch(url, init);
+
+    }
+    
+    export default http;
+  </textarea>
 </body>
 </html>
 
