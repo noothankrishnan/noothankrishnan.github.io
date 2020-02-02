@@ -1,0 +1,186 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Redux Design Pattern</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+<style>
+html {
+  background:lightgray;
+  }
+body {
+  width:800px;
+  margin:0 auto;
+  margin-bottom: 20px;
+  }
+textarea {
+  color:#000;
+  font-weight: bold;
+    padding-left:10px;
+    width: 98%;
+    height: 600px;
+    font-family: courier new;
+    font-size: 0.9rem;
+    resize: none;
+    overflow-x:hidden;
+    overflow-y: auto;
+    user-select: none;
+  background:darkseagreen
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<h1>Redux Design Pattern</h1>
+
+<!--
+<h2>Heading</h2>
+<textarea readonly>
+
+</textarea>
+-->
+
+<h2>index.html</h2>
+<textarea readonly>
+  import React from 'react';
+  import ReactDOM from 'react-dom';
+  import './index.css';
+  import App from './App';
+  import allReducers from './redux/reducers/combinereducers'
+  import {BrowserRouter} from 'react-router-dom';
+  import thunk from 'redux-thunk';
+  
+  import { createStore, applyMiddleware } from 'redux';
+  import { Provider } from 'react-redux';
+  
+  const store=createStore(allReducers,applyMiddleware(thunk));
+  
+  ReactDOM.render(
+  <Provider store={store}>
+  <BrowserRouter><App /></BrowserRouter>
+  </Provider>, document.getElementById('root')
+  );
+</textarea>
+
+<h2>App.js</h2>
+<textarea readonly>
+  import React from 'react';
+
+
+  import { Link, Switch, Route} from 'react-router-dom';
+  import ShoppingList from './components/ShoppingList';
+  import ShoppingCart from './components/ShoppingCart';
+  
+  import { connect } from 'react-redux';
+  
+  class App extends React.Component {
+    
+  
+    componentDidMount(){
+      this.props.fetchUserList();
+    }
+  
+    render(){
+  
+      return (
+        <div className="App">
+         <nav>
+          <ul>
+            <li><Link to="/">Shopping List</Link></li>
+            <li><Link to="/cart">Shopping Cart</Link></li>
+          </ul>
+         </nav>
+    
+         <Switch>
+              <Route path="/" component={ShoppingList} exact/>
+              <Route path="/cart" component={ShoppingCart}/>
+         </Switch>
+         
+        </div>
+      );
+  
+    }
+   
+  }
+  
+  const fetchUsers=async(dispatch)=>{ 
+  
+    const userlistPromise=await fetch('https://reqres.in/api/users?page=2');
+    const userlistJson=await userlistPromise.json();
+  
+    dispatch({
+        type:'GET_USERS',
+        payload:userlistJson.data
+    });
+  
+  }
+  
+  
+  const mapStateToProps=(state)=>{
+    return {
+        getUsersReducer:state.getUsersReducer
+    }
+  
+  }
+  
+  const mapDespatchToProps=(dispatch)=>{
+  
+    return {
+        fetchUserList:()=>{
+            return dispatch(fetchUsers)
+        }
+    }
+  }
+  
+  export default connect(mapStateToProps, mapDespatchToProps)(App);
+  
+</textarea>
+
+<h2>getUsersReducer.js</h2>
+<textarea readonly>
+
+  const getUsersReducer=(state={}, action)=>{
+    console.log("State in Reducer ", state)
+    switch(action.type){
+    
+        case 'GET_USERS': 
+        return {...state, storeData:action.payload}
+    
+        default:
+        return state
+    
+    }
+    
+    
+    }
+    
+    export default getUsersReducer;
+</textarea>
+<h2>combinereducers.js</h2>
+<textarea readonly>
+  import getUsersReducer from './getUsersReducer';
+import {  combineReducers } from 'redux';
+
+const allReducers=combineReducers({
+
+    getUsersReducer:getUsersReducer
+
+});
+
+export default allReducers;
+</textarea>
+
+</body>
+</html>
+
+
