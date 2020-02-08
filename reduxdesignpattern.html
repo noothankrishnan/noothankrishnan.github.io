@@ -183,133 +183,160 @@ export default allReducers;
   <h2>shoppingList.js</h2>
   <textarea readonly>
   
-import React from 'react';
-import lambogini from '../assets/images/lambogini.jpg'
-import { connect } from 'react-redux';
 
-
-const fetchUsers=async(dispatch)=>{ 
-
-    const userlistPromise=await fetch('https://reqres.in/api/users?page=2');
-    const userlistJson=await userlistPromise.json();
-
-    dispatch({
-        type:'GET_USERS',
-        payload:userlistJson.data
-    });
-
-}
-
-const ShoppingList=(props)=>{
-   
-
-    // useEffect(() => {
-    //     props.fetchUserList();
-    // },[]);
-
-   const userList=props.getUsersReducer.storeData || [];
-
-
-    return <React.Fragment>
-        <div>
-            <div>
-                <img width="500" src={lambogini} alt="item" onClick={props.fetchUserList}/>
-            </div>
-            <div>
-                {
-                    userList.map(item=>{
-                    return <div key={item.id}>{item.email}</div>
-                    })
-                }
-            </div>
-        </div>
-    </React.Fragment>
-
-}
-
-const mapStateToProps=(state)=>{
-    return {
-        getUsersReducer:state.getUsersReducer
+    import React from 'react';
+    import lambogini from '../assets/images/lambogini.jpg'
+    import { connect } from 'react-redux';
+    import http from '../redux/http';
+    
+    
+    
+    const fetchColors=async(dispatch)=>{ 
+    
+        const colorlistJson=await http('https://reqres.in/api/unknown','GET');
+    
+        dispatch({
+            type:'GET_COLORS',
+            payload:colorlistJson.data
+        });
+    
     }
-
-}
-
-const mapDespatchToProps=(dispatch)=>{
-    console.log('dispatch ', dispatch)
-    return {
-        fetchUserList:()=>{
-            return dispatch(fetchUsers)
+    
+    const ShoppingList=(props)=>{
+    
+       const userList=props.getUsersReducer.storeData || [];
+       const colorList=props.getColorsReducer.storeData || []
+    
+    
+        return <React.Fragment>
+            <div>
+                <div>
+                    <img width="500" src={lambogini} alt="item" onClick={props.fetchColorList}/>
+                </div>
+                <div>Users</div>
+                <div>
+                    {
+                        userList.map(item=>{
+                        return <div key={item.id}>{item.email}</div>
+                        })
+                    }
+                </div>
+                <div>Colors</div>
+                <div>
+                    {
+                        colorList.map(item=>{
+                        return <div style={{backgroundColor:item.color}} key={item.id}>{item.color}</div>
+                        })
+                    }
+                </div>
+            </div>
+        </React.Fragment>
+    
+    }
+    
+    const mapStateToProps=(state)=>{
+    
+        return {
+            getUsersReducer:state.getUsersReducer,
+            getColorsReducer:state.getColorsReducer
+        }
+    
+    }
+    
+    const mapDespatchToProps=(dispatch)=>{
+        return {
+            fetchColorList:()=>{
+                return dispatch(fetchColors)
+            }
         }
     }
-}
-
-export default connect(mapStateToProps, mapDespatchToProps)(ShoppingList);
+    
+    export default connect(mapStateToProps, mapDespatchToProps)(ShoppingList);
   </textarea>
   <h2>ShoppingCart.js</h2>
   <textarea readonly>
    
-import React from 'react';
-import { connect } from 'react-redux';
 
-
-
-const ShoppingCart=(props)=>{
-
-    const userList=props.getUsersReducer.storeData || [];
-
-  
-
-    return <React.Fragment>
-     <div>Shopping Cart</div>
-        <div>
-                {
-                    userList.map(item=>{
-                    return <div key={item.id}>{item.email}</div>
-                    })
-                }
-            </div>
- 
-    </React.Fragment>
-
-}
-
-const mapStateToProps=(state)=>{
-    return {
-        getUsersReducer:state.getUsersReducer
+    import React from 'react';
+    import { connect } from 'react-redux';
+    
+    
+    
+    const ShoppingCart=(props)=>{
+    
+        const userList=props.getUsersReducer.storeData || [];
+    
+      
+    
+        return <React.Fragment>
+         <div>Shopping Cart</div>
+            <div>
+                    {
+                        userList.map(item=>{
+                        return <div key={item.id}>{item.email}</div>
+                        })
+                    }
+                </div>
+     
+        </React.Fragment>
+    
     }
-
-}
-
-const mapDespatchToProps=(dispatch)=>{
-    return {
-        // fetchUserList:()=>{
-        //     return dispatch(fetchUsers)
-        // }
+    
+    const mapStateToProps=(state)=>{
+        return {
+            getUsersReducer:state.getUsersReducer
+        }
+    
     }
-}
-
-
-export default connect(mapStateToProps, mapDespatchToProps) (ShoppingCart);
+    
+    const mapDespatchToProps=(dispatch)=>{
+        return {
+            // fetchUserList:()=>{
+            //     return dispatch(fetchUsers)
+            // }
+        }
+    }
+    
+    
+    export default connect(mapStateToProps, mapDespatchToProps) (ShoppingCart);
   </textarea>
   
   <h2>http</h2>
   <textarea readonly>
     
-const http=(url, method='GET', data=null)=>{
-   
-    const init={
-        method:method,
-        body:data?JSON.stringify(data):data,
-        headers: { 
-          "Content-Type": "application/json",
+    const http=(url, method='GET', payload=null, userInit)=>{
+
+      if (typeof method==='object'){
+           userInit=method
         }
-    }
-
-    return fetch(url, init);
-
-    }
+       
+        const init={...{
+            method:method,
+            body:payload?JSON.stringify(payload):payload,
+            headers: { 
+              "Content-Type": "application/json",
+            }
+        }, ...userInit}
     
-    export default http;
+        return fetch(url, init).then(promise=>promise.json());
+    
+        }
+        
+        export default http;
+    
+    
+    // Usage:
+    
+    // GET Request
+    //const json=await http('https://reqres.in/api/unknown');
+    //setState({stores:json.data}
+    
+    //POST Request 
+    //const resp=http("https://reqres.in/api/users?page=2", 'POST',payload);
+    
+    //Custom Init
+    //http("https://reqres.in/api/users?page=2", 'POST',payload, myInit); or
+    //http("https://reqres.in/api/users?page=2", myInit);
   </textarea>
 </body>
 </html>
