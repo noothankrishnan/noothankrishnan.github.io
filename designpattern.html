@@ -128,23 +128,12 @@ render(){
 <h2>asyn-await</h2>
 
 <textarea readonly>
+  const userlistJson=await http('https://reqres.in/api/users?page=2');
 
-    
-  async componentDidMount(){
-    
-   const promise=await fetch('https://reqres.in/api/users/2');
-    const promise2=await fetch('https://reqres.in/api/unknown/2');
-
-    const data2=await promise2.json();
-    const data=await promise.json();
-
-    this.setState((state)=>{
-      return {
-        json:data.data.email,
-        json2:data2.data.name
-      }
-    });
-    }
+  dispatch({
+      type:'GET_USERS',
+      payload:userlistJson.data
+  });
 </textarea>
   
   <h2>router</h2>
