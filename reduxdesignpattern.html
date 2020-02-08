@@ -81,13 +81,15 @@ textarea {
   import ShoppingList from './components/ShoppingList';
   import ShoppingCart from './components/ShoppingCart';
   
+  import http from './redux/http';
+  
   import { connect } from 'react-redux';
   
   class App extends React.Component {
     
   
     componentDidMount(){
-      this.props.fetchUserList();
+       this.props.fetchUserList();
     }
   
     render(){
@@ -115,8 +117,7 @@ textarea {
   
   const fetchUsers=async(dispatch)=>{ 
   
-    const userlistPromise=await fetch('https://reqres.in/api/users?page=2');
-    const userlistJson=await userlistPromise.json();
+    const userlistJson=await http('https://reqres.in/api/users?page=2');
   
     dispatch({
         type:'GET_USERS',
@@ -143,6 +144,8 @@ textarea {
   }
   
   export default connect(mapStateToProps, mapDespatchToProps)(App);
+  
+  //export default App;
   
 </textarea>
 
