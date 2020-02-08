@@ -128,12 +128,16 @@ render(){
 <h2>asyn-await</h2>
 
 <textarea readonly>
-  const userlistJson=await http('https://reqres.in/api/users?page=2');
+  const fetchUsers=async(dispatch)=>{ 
 
-  dispatch({
-      type:'GET_USERS',
-      payload:userlistJson.data
-  });
+    const userlistJson=await http('https://reqres.in/api/users?page=2');
+  
+    dispatch({
+        type:'GET_USERS',
+        payload:userlistJson.data
+    });
+  
+  }
 </textarea>
   
   <h2>router</h2>
