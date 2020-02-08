@@ -24,7 +24,7 @@ textarea {
   font-weight: bold;
     padding-left:10px;
     width: 98%;
-    height: 600px;
+    height: 350px;
     font-family: courier new;
     font-size: 0.9rem;
     resize: none;
@@ -179,7 +179,138 @@ const allReducers=combineReducers({
 
 export default allReducers;
 </textarea>
+  
+  <h2>shoppingList.js</h2>
+  <textarea readonly>
+  
+import React from 'react';
+import lambogini from '../assets/images/lambogini.jpg'
+import { connect } from 'react-redux';
 
+
+const fetchUsers=async(dispatch)=>{ 
+
+    const userlistPromise=await fetch('https://reqres.in/api/users?page=2');
+    const userlistJson=await userlistPromise.json();
+
+    dispatch({
+        type:'GET_USERS',
+        payload:userlistJson.data
+    });
+
+}
+
+const ShoppingList=(props)=>{
+   
+
+    // useEffect(() => {
+    //     props.fetchUserList();
+    // },[]);
+
+   const userList=props.getUsersReducer.storeData || [];
+
+
+    return <React.Fragment>
+        <div>
+            <div>
+                <img width="500" src={lambogini} alt="item" onClick={props.fetchUserList}/>
+            </div>
+            <div>
+                {
+                    userList.map(item=>{
+                    return <div key={item.id}>{item.email}</div>
+                    })
+                }
+            </div>
+        </div>
+    </React.Fragment>
+
+}
+
+const mapStateToProps=(state)=>{
+    return {
+        getUsersReducer:state.getUsersReducer
+    }
+
+}
+
+const mapDespatchToProps=(dispatch)=>{
+    console.log('dispatch ', dispatch)
+    return {
+        fetchUserList:()=>{
+            return dispatch(fetchUsers)
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDespatchToProps)(ShoppingList);
+  </textarea>
+  <h2>ShoppingCart.js</h2>
+  <textarea readonly>
+   
+import React from 'react';
+import { connect } from 'react-redux';
+
+
+
+const ShoppingCart=(props)=>{
+
+    const userList=props.getUsersReducer.storeData || [];
+
+  
+
+    return <React.Fragment>
+     <div>Shopping Cart</div>
+        <div>
+                {
+                    userList.map(item=>{
+                    return <div key={item.id}>{item.email}</div>
+                    })
+                }
+            </div>
+ 
+    </React.Fragment>
+
+}
+
+const mapStateToProps=(state)=>{
+    return {
+        getUsersReducer:state.getUsersReducer
+    }
+
+}
+
+const mapDespatchToProps=(dispatch)=>{
+    return {
+        // fetchUserList:()=>{
+        //     return dispatch(fetchUsers)
+        // }
+    }
+}
+
+
+export default connect(mapStateToProps, mapDespatchToProps) (ShoppingCart);
+  </textarea>
+  
+  <h2>http</h2>
+  <textarea readonly>
+    
+const http=(url, method='GET', data=null)=>{
+   
+    const init={
+        method:method,
+        body:data?JSON.stringify(data):data,
+        headers: { 
+          "Content-Type": "application/json",
+        }
+    }
+
+    return fetch(url, init);
+
+    }
+    
+    export default http;
+  </textarea>
 </body>
 </html>
 
