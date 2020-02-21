@@ -1,167 +1,135 @@
+<!--Author:Noothan Krishnan-->
+
 <!DOCTYPE html>
-<html id="page">
-   <head>
-      <meta charset="utf-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title>Resume of Noothan Krishnan</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-8">
-      <meta name="author" content="Noothan Krishnan Panthayi">
-      <link rel="stylesheet" href="./resume.css" />
-   </head>
-   <body>
-      <div class="page">
-         <header>
-            <div>Noothan Krishnan Panthayi</div>
-            <div class="title">Front-End Web Application Developer</div>
-         </header>
-         <section class="container">
-            <div class='side-panel'>
-               <img src="./noothankrishnan.png" width="177"/>
-               <ul class='panel-list'>
-                  <li class='contact-details slate-color'>
-                     <div class='email-icon'><a href="mailto:noothankrishnan@hotmail.com">noothankrishnan@hotmail.com</a></div>
-                     <div class='phone-icon'><a href="tel:248-971-5582">248-971-5582</a></div>
-                     <div class='home-icon'>Austin, TX 78728</div>
-                   
-                  </li>
-                  <li >&nbsp;</li>
-                  <li class='panel-header'>Education</li>
-                  <li >Bachelor of Physics</li>
-                  <li >Diploma in Computer Studies</li>
-                  <li >&nbsp;</li>
-                  <!-- <li class='panel-header'>Visa Status</li>
-                  <li >H1B (I-140 approved) till 2021</li>
-                  <li >&nbsp;</li> -->
-                  <li class='panel-header'>Personal Project</li>
-                  <li class="pjt-summary">
-                     <div>
-                        <a target="_blank" href="https://noothankrishnan.github.io/jsontohtml">JSON to HTML</a>
-                     </div>
-                  </li>
-               </ul>
-            </div>
-            <div class='main-content'>
-               <ul class='content-list-container'>
-                  <li class='summary'>Front-End Web Application Developer with proficiency in React, Redux, React Native Mobile Application development, Responsive web development, Android Studio, Apple XCode, Angular 7, 
-Angular Material UI, git, GitHub, node, npm, Jira, Confluence, Windows/macOS/Unix in Agile/Scrum, Sprint&nbsp;based development environment.
 
-                  </li>
-               </ul>
-               <div class="sub-heading">Expertise</div>
-               <div class="expertize">
-                  <div class="col-left">
-                     <ul>
-                        <li>
-                           <b>Component development</b> using React, Redux, 
-React Native, React Material UI, Android Studio, Apple XCode, Angular 7, Angular Material UI
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./jsontotable.js"></script>
+</head>
+
+<body>
+    <div class='form-panel'>
+      <div class='heading'>JSON to HTML Table</div>
+      <label>Specify a JSON Source:</label>
+
+        <textarea row="1" onClick="this.select()" type="text" placeholder="Enter a JSON URL or paste JSON data here or Choose a JSON data file from your disk" id="url"></textarea>
+
+        <button onClick="doRoute()" class="btn-convert">Submit&nbsp;<div class="load-icon"></div></button>
+       
+        <span class="choose-load-icon"></span>
+        <input name="file" type="file" id="files" class="form-control" onChange="doExtract();">
+        <!-- <button onClick="showDemo()">Show Demo</button> -->
+        <a class="show-demo" href="javascript:showDemo();">Show Demo</a>
+       
+
+        <div class='info'>
+            This JavaScript utility accepts JSON data with one level and converts it into an easy to read HTML table. You can also sort the table by clicking on the column header.
+            <br/>For this, all you need to do is either paste a JSON URL into the textbox, or paste a JSON data directly into the textbox or choose a JSON data file from your hard disk.
+        </div>
 
 
-                        </li>
-                        <li>
-                           <b>API integration</b> with User Interface using AJAX, JSON, Async/ Await, Redux Thunk, RESTful web services, Postman API development platform
+        <div class='error'></div>
 
-                        </li>
-                        <li>
-                           <b>Programming</b> in JavaScript, ES6, TypeScript, Flow static type checker, jQuery 
-                        </li>
-                     
-                                <li><b>Accessibility</b> – Section 508/ADA Compliance/WCAG/WAI-ARIA</li>
-                         <li><b>Project documentation</b> – Confluence, Sharepoint</li>
-                          <li><b>Website Performance</b> Tuning, gulp task runner, YSlow, Chrome Developer toolbar</li>
-                     </ul>
-                  </div>
-                  <div class="col-right">
-                     <ul>
-                
-                         <li><b>Web Development</b> - Images to Wireframe Conversion for web and React Native applications, Responsive Web Design, SASS, CSS Flexbox, CSS Grid, Media Queries</li>
-                      
-                      
-                        <li><b>Version control</b> – git commands, Git Hub, 
-VSCode Source Control
-</li>
-                        <li><b>IDE</b> VSCode, Eclipse
+        <div class="author">Developed by Noothan Krishnan</div>
 
-</li>
-                        <li><b>Defect Fixing</b> - Cross Browser, IOS/Android compatibility,Troubleshooting and defect fixing</li>
-                        <li><b>Project Management</b> Agile, Scrum, Sprint based CI/CD development environment</li>
-                        <li><b>Operating System</b> – Windows 10.1, macOS, Unix</li>
-                     </ul>
-                  </div>
-               </div>
-               <div class="sub-heading">Employment Summary</div>
-               <div class='employment-summary'>
-                  
-                   <div class="b">Walmart Inc. </div>
-                  <div>Bentonville, AR</div>
-                  <div>Jun 2019 – Present</div>
-                  <div class="b">DXC Technology</div>
-                  <div>Austin, Texas</div>
-                  <div>April 3, 2017 – April 26, 2019</div>
-                  <div class="b">Hewlett Packard Enterprise</div>
-                  <div>Austin, Texas</div>
-                  <div>October 2013 – March 2017</div>
-                  <div class="b">HTC Global Services Inc.</div>
-                  <div>Columbus, Ohio</div>
-                  <div>March 2011 – September 2013</div>
-                  <div class="b">Accenture Services Pvt. Ltd.</div>
-                  <div>Bangalore, India</div>
-                  <div>October 2005 – February 2011</div>
-               </div>
-               <div class="sub-heading">Technical Proficiencies</div>
-               <div class='technical-proficiencies'>
-                  <div><span class="b">Programming:</span>ReactJS, React Native, Flow type checker, Angular 7, Angular Material, HTML5, CSS3, SASS, JavaScript, ES6, jQuery, AJAX, JSON, Web Services</div>
-                  <div><span class="b">Browsers : </span>Chrome, Internet Explorer, Firefox, Opera on desktop and mobile</div>
-                  <div><span class="b">Platforms: </span>Windows, UNIX, Linux</div>
-                  <div><span class="b">Utilities: </span>Git, GitHub, Symantec VIP, SVN, IBM Rational ClearCase, PVCS, Secure Shell, RSA SecurID</div>
-                  <div><span class="b">IDE: </span>Eclipse, Visual Basic Code, Sublime, Weblogic Portal</div>
-                  <div><span class="b">Mobile App Development: </span>Apple XCode, Android Studio, React Native, Redux</div>
-               </div>
-               <div class="sub-heading">Personal Project</div>
-               <ul class="projects">
-                  <li>
-                     <b>GitHub Page: JSON to HTML table</b>
-                     <div><a target="_blank" href="https://noothankrishnan.github.io/jsontohtml">https://noothankrishnan.github.io/jsontohtml</a></div>
-                     This JavaScript utility accepts JSON data and converts it into an easy to read HTML table. 
-                     Three different options are made available to the users to specify the JSON source:
-                     <div>1.	Directly paste a JSON data into the textbox</div>
-                     <div>2.	Specify a JSON endpoint (URL)</div>
-                     <div>3.	Choose a JSON data file from the hard disk</div>
-                     You can sort the table by clicking on the column header. 
-                     This utility is developed using plain Javascript/ES6 and AJAX.
-                  </li>
-               </ul>
-               <div class="sub-heading">Work Summary</div>
-               <ul class="work-summary">
-               <li>Single Page Web Application development using React/Redux/Angular</li>
-               <li>React Native Mobile App Development</li>
-               <li>Android Studio/Apple Xcode</li>
-               <li>Integrating UI with REST based web services</li>
-               <li>Develop re-usable React, React Native, Angular components</li>
-               <li>Testing and Defect Fixing</li>
-               <li>Maintain cross-browser compatibility</li>
-               <li>Wireframe development using HTML5 and CSS3</li>
-               <li>Applied Web Content Accessibilty Guidelines (WCAG) for JPMorgan Chase project</li>
-               <li>Provide technical support to the team members</li>
-               <li>Agile Development environment</li>
-               <li>Skills:React, React Native, Redux, Thunk, Angulr,Javascript, ES6, AJAX, JSON, HTML5, CSS3, Responsive Web Design, SASS, NodeJs, jQuery, <br/>NodeJs, ReactJS, Github, 
-                  Web Services, gulp task runner  </li>
-               </ul>
-               <div class="sub-heading">Honors & Awards</div>
-               <ul class="awards">
-                  <li>	<b>Instant Karma Award (2005)</b> - This is awarded by Accenture for exemplary individual performance and valuable contribution to the project, JP Morgan Chase</li>
-                  <li>	<b>Super Trooper Team Award (2005)</b> - This is awarded by Accenture for exemplary team performance and valuable contribution to the project, JP Morgan Chase</li>
-                  <li>	<b>Ace Award (2006)</b> - This is awarded by Accenture for exemplary individual performance and valuable contribution to the project, JP Morgan Chase</li>
-                  <li>	<b>The Trailblazer (2010)</b> - This is awarded by Accenture for demonstrating exceptional contribution to the project, JP Morgan Chase</li>
-                  <li>	<b>CIO Excellence Award (2014)</b> – This is awarded by Hewlett Packard in recognition for 2014 Excellent Innovation Team Achievement</li>
-                  <li>	<b>Certificate of Achievement (2017)</b> – This is awarded by Hewlett Packard Enterprise for providing critical support to the project “Vista Migration & Transformation Program”</li>
-               </ul>
-            </div>
-         </section>
-    
-         <footer>
-            <a class="footer" href="#page">Resume of Noothan Krishnan Panthayi&nbsp;⮝</a>
-         </footer>
-      </div>
-   </body>
-</html>
+    </div>
+
+    <div class="showdata">
+        <pre>
+Sample JSON data for demo: (Copy this JSON data, paste it in the above textbox and Submit)
+[
+   {
+      "make":"Ford",
+      "model":"Fusion Energi",
+      "year":"2019",
+      "combined mpg":"42"
+   },
+    {
+       "make":"Hyundai",
+       "model":"Accent",
+       "year":"2019",
+       "combined mpg":"31"
+    },
+    {
+       "make":"Audi",
+       "model":"A3",
+       "year":"2019",
+       "combined mpg":"29"
+    },
+    {
+       "make":"Volkswagen",
+       "model":"Jetta",
+       "year":"2019",
+       "combined mpg":"34"
+    },
+    {
+      "make":"Toyota",
+      "model":"Camry Hybrid",
+      "year":"2019",
+      "combined mpg":"52"
+   },
+    {
+       "make":"Buick",
+       "model":"LaCrosse",
+       "year":"2019",
+       "combined mpg":"29"
+    },
+    {
+       "make":"Chevrolet",
+       "model":"Malibu",
+       "year":"2019",
+       "combined mpg":"32"
+    },
+    {
+       "make":"Honda",
+       "model":"Accord Hybrid",
+       "year":"2019",
+       "combined mpg":"48"
+    },
+    {
+       "make":"Accura",
+       "model":"ILX",
+       "year":"2019",
+       "combined mpg":"28"
+    },
+    {
+       "make":"BMW",
+       "model":"3 Series",
+       "year":"2019",
+       "combined mpg":"27"
+    },
+    {
+       "make":"Mercedez",
+       "model":"Benz C-Class",
+       "year":"2019",
+       "combined mpg":"27"
+    },
+    {
+       "make":"Toyota",
+       "model":"Avalon Hybrid",
+       "year":"2019",
+       "combined mpg":"43"
+    },
+    {
+       "make":"Cadillac",
+       "model":"ATS",
+       "year":"2018",
+       "combined mpg":"25"
+    },
+    {
+       "make":"Volvo",
+       "model":"S60",
+       "year":"2019",
+       "combined mpg":"28"
+    },
+    {
+        "make":"Mitsubishi",
+        "model":"Mirage G4",
+        "year":"2019",
+        "combined mpg":"35"
+     }
+ ]
+</pre>
+    </div>
+</body>
